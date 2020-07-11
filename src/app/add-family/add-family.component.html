@@ -1,1 +1,27 @@
-<p>add-family works!</p>
+<div class="container custom-container">
+    <div class="col-md-12">
+      <h3 class="mb-3 text-center">Añadir Familiar</h3>
+      <!-- <div class="form-group">
+        <input type="text" [(ngModel)]="newWork.id_trabajo" class="form-control" placeholder="Id">
+      </div> -->
+      <div class="form-group">
+        <input type="text" [(ngModel)]="newFamily.cedula" class="form-control" placeholder="Cedula">
+      </div>
+      <div class="form-group">
+        <input type="text" [(ngModel)]="newFamily.full_name" class="form-control" placeholder="Nombre completo">
+      </div>
+      <div class="form-group">
+        <input type="text" [(ngModel)]="newFamily.disease" class="form-control" placeholder="Enfermedad">
+      </div>
+      <div class="form-group">
+        <input type="text" [(ngModel)]="newFamily.relationship" class="form-control" placeholder="Relacion">
+      </div>
+      <div class="form-group">
+        <input type="text" [(ngModel)]="newFamily.source" class="form-control" placeholder="Fuenta">
+      </div>
+      <div class="form-group">
+        <button class="btn btn-success btn-lg btn-block" (click)="addFamily(newFamily)">Añadir familiar</button>
+      </div>
+    </div>
+  </div>
+}

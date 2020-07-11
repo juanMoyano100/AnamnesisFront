@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { WorkServiceService } from '../shared/work-service.service';
+import { Work } from '../shared/model/work';
 
 @Component({
   selector: 'app-list-works',
@@ -6,10 +9,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./list-works.component.sass']
 })
 export class ListWorksComponent implements OnInit {
-
-  constructor() { }
+  works:Work[]
+  constructor(private service:WorkServiceService,private router:Router) { }
 
   ngOnInit() {
+    this.service.getWorks().subscribe((data:any)=>{this.works = data})
   }
 
 }

@@ -1,1 +1,28 @@
-<p>list-family works!</p>
+<h1>Lista de familiares</h1>
+    <a type="button" class="btn btn-primary" [routerLink]="['../addFamily']">Añadir Familiar</a>
+<table class="table table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">Cedula</th>
+            <th scope="col">Nombre completo</th>
+            <th scope="col">Enfermedad</th>
+            <th scope="col">Relacion</th>
+            <th scope="col">Fuente</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor='let f of family'>
+            <th scope="row">{{f?.cedula}}</th>
+            <td>{{f?.full_name}}</td>
+            <td>{{f?.disease}}</td>
+            <td>{{f?.relationship}}</td>
+            <td>{{f?.source}}</td>
+            <td><button type="button" class="btn btn-primary"
+                    routerLink="/work-edit/{{work?.id}}">Edit</button></td>
+            <td><button type="button" class="btn btn-danger" (click)="deletework(work?.id)">Delete</button>
+            </td>
+        </tr>
+    </tbody>
+</table>

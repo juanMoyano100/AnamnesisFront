@@ -1,1 +1,24 @@
-<p>list-works works!</p>
+<h1>Lista de trabajos</h1>
+    <a type="button" class="btn btn-primary" [routerLink]="['../addWork']">Añadir trabajo</a>
+<table class="table table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Trabajo</th>
+            <th scope="col">Descripcion actividades</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor='let w of works'>
+            <th scope="row">{{w?.id}}</th>
+            <td>{{w?.work}}</td>
+            <td>{{w?.activity_description}}</td>
+            <td><button type="button" class="btn btn-primary"
+                    routerLink="/work-edit/{{work?.id}}">Edit</button></td>
+            <td><button type="button" class="btn btn-danger" (click)="deletework(work?.id)">Delete</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
