@@ -1,0 +1,77 @@
+<div class="row">
+    <div class="col-12">
+        <p><b>Nombre de los sintomas</b></p>
+    </div>
+    <div class="col-9">
+        <input type="text" [(ngModel)]="patient.cedula" class="form-control" placeholder="Sintoma">
+    </div>
+    <div class="col-3">
+        <button class="btn btn-primary" (click)="seachPatient(patient.cedula)">Buscar</button>
+    </div>
+</div>
+<div class="row" *ngIf="value">
+    <table class="table table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Codigo</th>
+                <th scope="col">Sintoma</th>
+                <th scope="col">Descripcion</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor='let anamn of patientAnamnesis'>
+                <th scope="row">{{anamn?.id}}</th>
+                <td>{{anamn?.reason_consultation}}</td>
+                <td>{{anamn?.presumptiveDiagnosticList}}</td>
+                <td><button type="button" class="btn btn-primary" routerLink="">Detalles</button></td>
+                <td><button type="button" class="btn btn-success" routerLink="">Agregar</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <p><b>Agregar enfermedades</b></p>
+    </div>
+    <div class="col-9">
+        <input type="text" [(ngModel)]="patient.cedula" class="form-control" placeholder="Sintoma">
+    </div>
+    <div class="col-3">
+        <button class="btn btn-primary" (click)="seachPatient(patient.cedula)">Buscar</button>
+    </div>
+</div>
+<div class="row" *ngIf="value">
+    <table class="table table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Codigo</th>
+                <th scope="col">Sintoma</th>
+                <th scope="col">Descripcion</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor='let anamn of patientAnamnesis'>
+                <th scope="row">{{anamn?.id}}</th>
+                <td>{{anamn?.reason_consultation}}</td>
+                <td>{{anamn?.presumptiveDiagnosticList}}</td>
+                <td><button type="button" class="btn btn-primary" routerLink="">Detalles</button></td>
+                <td><button type="button" class="btn btn-success" routerLink="">Agregar</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="row">
+    <div class="col-3">
+        Observaciones diagnostico presuntivo
+    </div>
+    <div class="col-9">
+        <input type="date" [(ngModel)]="newAnamnesis.condition_Date" class="form-control"
+            placeholder="Fecha padecimiento">
+    </div>
+</div>

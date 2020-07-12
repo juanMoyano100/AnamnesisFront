@@ -21,5 +21,6 @@ export class AddWorkComponent implements OnInit {
       this.router.navigate(['/listWorks'])
     })
   }
+  
 
 }

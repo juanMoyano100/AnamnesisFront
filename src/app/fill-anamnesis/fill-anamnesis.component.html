@@ -1,0 +1,42 @@
+<app-navbar></app-navbar>
+<div class="container-fluid pb-4 mb-5">
+    <div class="row mb-5">
+      <div class="col-md-12 mb-5">
+        <app-personal-data *ngIf="pages==1" [(newAnamnesis)]="finalAnamnesis"></app-personal-data>
+        <app-personal-history *ngIf="pages==2" [(newAnamnesis)]="finalAnamnesis"></app-personal-history>
+        <app-list-family *ngIf="pages==3" [(newAnamnesis)]="finalAnamnesis"></app-list-family>
+        <app-list-works *ngIf="pages==4"[(newAnamnesis)]="finalAnamnesis"></app-list-works>
+        <app-diseases-and-diagnostic *ngIf="pages==5" [(newAnamnesis)]="finalAnamnesis"></app-diseases-and-diagnostic>
+        <app-medic-register *ngIf="pages==6" [(newAnamnesis)]="finalAnamnesis"></app-medic-register>
+        <!-- <app-pacific-form-html-pag1 *ngIf="pages==1"></app-pacific-form-html-pag1>
+        <app-pacific-form-html-pag2 *ngIf="pages==2"></app-pacific-form-html-pag2>
+        <app-pacific-form-html-pag3 *ngIf="pages==3"></app-pacific-form-html-pag3>
+        <app-pacific-form-html-pag4 *ngIf="pages==4"></app-pacific-form-html-pag4>
+        <app-pacific-form-html-pag5 *ngIf="pages==5"></app-pacific-form-html-pag5> -->
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid fixed-bottom bg-light">
+    <div class="row card-header">
+      <div class="col-md-2 col-sm-6 col-6 my-1">
+        <button *ngIf="pages!=1" class="btn btn-primary" (click)="pages=pages-1">Anterior</button>
+      </div>
+      <div class="col-md-8 col-sm-12 text-center my-1 responsive">
+        <ngb-pagination class="mx-auto w-100" [directionLinks]="false" [(page)]="pages" [collectionSize]="60"
+          [rotate]="true" [ellipses]="false">
+        </ngb-pagination>
+      </div>
+      <div class="col-md-2 col-sm-6 col-6 text-right my-1">
+        <button *ngIf="pages!=6" class="btn btn-primary" (click)="pages=pages+1">Siguiente</button>
+      </div>
+      <div class="col-12 my-1 responsive">
+        <ngb-progressbar type="success" [value]="pages*(100/6)" [striped]="true" [animated]="true">
+          <i>{{(pages*(100/6))| number: '2.0-0'}}%</i>
+        </ngb-progressbar>
+      </div>
+      <div class="col-12 my-1 text-center">
+        <button class="btn btn-success mx-1" (click)="onSave()">Guardar</button>
+      </div>
+    </div>
+  </div>
+  

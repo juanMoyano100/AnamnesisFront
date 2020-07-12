@@ -9,9 +9,13 @@ import { AddFamilyComponent } from './add-family/add-family.component';
 import { ListFamilyComponent } from './list-family/list-family.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import { PathologicalPersonalHistoryComponent } from './pathological-personal-history/pathological-personal-history.component';
-import { NoPatoloicalPersonalHistoryComponent } from './no-patoloical-personal-history/no-patoloical-personal-history.component';
-import { HousingConditionComponent } from './housing-condition/housing-condition.component';
+import { PersonalDataComponent } from './personal-data/personal-data.component';
+import { PersonalHistoryComponent } from './personal-history/personal-history.component';
+import { DiseasesAndDiagnosticComponent } from './diseases-and-diagnostic/diseases-and-diagnostic.component';
+import { MedicRegisterComponent } from './medic-register/medic-register.component';
+import { FillAnamnesisComponent } from './fill-anamnesis/fill-anamnesis.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import {NgbPaginationModule, NgbAlertModule,NgbProgressbarModule,NgbModule  } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -20,16 +24,21 @@ import { HousingConditionComponent } from './housing-condition/housing-condition
     ListWorksComponent,
     AddFamilyComponent,
     ListFamilyComponent,
-    PathologicalPersonalHistoryComponent,
-    NoPatoloicalPersonalHistoryComponent,
-    HousingConditionComponent
+    PersonalDataComponent,
+    PersonalHistoryComponent,
+    DiseasesAndDiagnosticComponent,
+    MedicRegisterComponent,
+    FillAnamnesisComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
-
+    FormsModule,
+    NgbPaginationModule,
+    NgbProgressbarModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,5 +1,5 @@
 <h1>Lista de trabajos</h1>
-    <a type="button" class="btn btn-primary" [routerLink]="['../addWork']">Añadir trabajo</a>
+    <!-- <a type="button" class="btn btn-primary" [routerLink]="['../addWork']">Añadir trabajo</a> -->
 <table class="table table table-hover">
     <thead>
         <tr>
@@ -22,3 +22,21 @@
         </tr>
     </tbody>
 </table>
+
+
+<button class="btn btn-lg btn-primary" (click)="open(mymodal)">Agregar trabajo</button>
+   
+<ng-template #mymodal let-modal>
+  <div class="modal-header">
+    <!-- <h4 class="modal-title" id="modal-basic-title">Bootstrap Modal</h4> -->
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <app-add-work></app-add-work>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Cerrar</button>
+  </div>
+</ng-template>

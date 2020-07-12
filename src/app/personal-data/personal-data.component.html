@@ -1,0 +1,162 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+
+            <!-- <div class="form-group">
+              <input type="text" [(ngModel)]="newWork.id_trabajo" class="form-control" placeholder="Id">
+            </div> -->
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-12">
+                        <p><b>Ingrese el numero de cedula del paciente</b></p>
+                    </div>
+                    <div class="col-9">
+                        <input type="text" [(ngModel)]="patient.cedula" class="form-control" placeholder="Cédula">
+                    </div>
+                    <div class="col-3">
+                        <button class="btn btn-primary" (click)="seachPatient(patient.cedula)">Buscar</button>
+                    </div>
+                </div>
+                <br>
+                <div class="row" *ngIf="value">
+                    <table class="table table table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">Cédula</th>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Direccion</th>
+                                <th scope="col">Teléfono</th>
+                                <th scope="col">Fecha nacimiento</th>
+                                <th scope="col">Nacionalidad</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">{{patient?.cedula}}</th>
+                                <td>{{patient?.nombre}}</td>
+                                <td>{{patient?.direccion}}</td>
+                                <td>{{patient?.telefono}}</td>
+                                <td>{{patient?.fecha_nacimiento}}</td>
+                                <td>{{patient?.nacionalidad}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="row">
+                    <div class="col-12" *ngIf="value">
+                        <p><b>Anamnesis anteriores del paciente</b> </p>
+                    </div>
+                </div>
+                <div class="row" *ngIf="value">
+                    <table class="table table table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">Motivo de consulta</th>
+                                <th scope="col">Diagnostico presuntivo</th>
+                                <th scope="col">Fecha de padecimiento</th>
+                                <th scope="col"></th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor='let anamn of patientAnamnesis'>
+                                <th scope="row">{{anamn?.id}}</th>
+                                <td>{{anamn?.reason_consultation}}</td>
+                                <td>{{anamn?.presumptiveDiagnosticList}}</td>
+                                <td>{{anamn?.condition_Date}}</td>
+                                <td><button type="button" class="btn btn-primary" routerLink="">Detalles</button></td>
+                                <td><button type="button" class="btn btn-success" routerLink="">Copiar</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-12" *ngIf="value">
+                    <p><b>Examenes físicos del paciente</b> </p>
+                </div>
+            </div>
+            <div class="row" *ngIf="value">
+                <table class="table table table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Paciente</th>
+                            <th scope="col">Caso</th>
+                            <th scope="col">Precio</th>
+                            <th scope="col">Fecha</th>
+                            <th scope="col"></th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- <tr *ngFor='let anamn of anamnesisList'>
+                            <th scope="row">{{anamn?.cedula}}</th>
+                            <td>{{anamn?.nombre}}</td>
+                            <td>{{anamn?.direccion}}</td>
+                            <td>{{anamn?.telefono}}</td> -->
+                        <tr>
+                            <th scope="row">{{physicExam?.id}}</th>
+                            <td>{{physicExam?.paciente}}</td>
+                            <td>{{physicExam?.caso}}</td>
+                            <td>{{physicExam?.precio}}</td>
+                            <td>{{physicExam?.fecha}}</td>
+                            <td><button type="button" class="btn btn-primary" routerLink="">Detalles</button></td>
+                            <td><button type="button" class="btn btn-success" routerLink="">Adjuntar examen</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="row" *ngIf="value">
+                <div class="col-12">
+                    <p><b>Datos generales de anamnesis</b></p>
+                </div>
+
+            </div>
+            <div class="" *ngIf="value">
+                <div class="row">
+                    <div class="col-3">
+                       Informacion examen físico
+                    </div>
+                    <div class="col-9">
+                        <input type="text" [(ngModel)]="newAnamnesis.id_physical_exam" class="form-control"
+                            placeholder="Examen físico">
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-3">
+                        Motivo de consulta
+                    </div>
+                    <div class="col-9">
+                        <!-- objetoPersonalData.reason_consultation -->
+                        <input type="text" [(ngModel)]="newAnamnesis.reason_consultation" class="form-control"
+                            placeholder="Motivo de consulta">
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-3">
+                        Fecha padecimiento
+                    </div>
+                    <div class="col-9">
+                        <input type="date" [(ngModel)]="newAnamnesis.condition_Date" class="form-control"
+                            placeholder="Fecha padecimiento">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-3">
+                        Enfermedad Actual
+                    </div>
+                    <div class="col-9">
+                        <input type="text" [(ngModel)]="newAnamnesis.actual_disease" class="form-control"
+                            placeholder="Fecha padecimiento">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

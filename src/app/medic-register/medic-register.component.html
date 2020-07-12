@@ -1,0 +1,37 @@
+<div class="row">
+    <div class="col-12">
+        <p><b>Datos generales de anamnesis</b></p>
+    </div>
+
+</div>
+<div class="" >
+    <div class="row">
+        <div class="col-3">
+           Informacion examen físico
+        </div>
+        <div class="col-9">
+            <input type="text" [(ngModel)]="newAnamnesis.id_physical_exam" class="form-control"
+                placeholder="Examen físico">
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-3">
+            Motivo de consulta
+        </div>
+        <div class="col-9">
+            <!-- objetoPersonalData.reason_consultation -->
+            <input type="text" [(ngModel)]="newAnamnesis.reason_consultation" class="form-control"
+                placeholder="Motivo de consulta">
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-3">
+            Fecha padecimiento
+        </div>
+        <div class="col-9">
+            <input type="date" [(ngModel)]="newAnamnesis.condition_Date" class="form-control"
+                placeholder="Fecha padecimiento">
+        </div>
+    </div>

@@ -1,5 +1,5 @@
 <h1>Lista de familiares</h1>
-    <a type="button" class="btn btn-primary" [routerLink]="['../addFamily']">Añadir Familiar</a>
+<!-- <a type="button" class="btn btn-primary" [routerLink]="['../addFamily']">Añadir Familiar</a> -->
 <table class="table table table-hover">
     <thead>
         <tr>
@@ -19,10 +19,26 @@
             <td>{{f?.disease}}</td>
             <td>{{f?.relationship}}</td>
             <td>{{f?.source}}</td>
-            <td><button type="button" class="btn btn-primary"
-                    routerLink="/work-edit/{{work?.id}}">Edit</button></td>
+            <td><button type="button" class="btn btn-primary" routerLink="/work-edit/{{work?.id}}">Edit</button></td>
             <td><button type="button" class="btn btn-danger" (click)="deletework(work?.id)">Delete</button>
             </td>
         </tr>
     </tbody>
 </table>
+
+<button class="btn btn-lg btn-primary" (click)="open(mymodal)">Agregar familiar</button>
+   
+<ng-template #mymodal let-modal>
+  <div class="modal-header">
+    <!-- <h4 class="modal-title" id="modal-basic-title">Bootstrap Modal</h4> -->
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <app-add-family></app-add-family>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Cerrar</button>
+  </div>
+</ng-template>
