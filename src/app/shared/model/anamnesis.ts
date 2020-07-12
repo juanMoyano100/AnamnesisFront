@@ -1,10 +1,10 @@
 import { PathologicalPersonalHistory } from './pathological-personal-history';
 import { NoPathologicalPersonalHistory } from './no-pathological-personal-history';
 import { HousingConditions } from './housing-conditions';
-import { Family } from './family';
-import { Work } from './work';
 import { PresuntiveDiagnostic } from './presuntive-diagnostic';
-import { Symptom } from './symptom';
+import { FamilyHistory } from './family-history';
+import { WorkHistory } from './work-history';
+import { PatientSymptom } from './patient-symptom';
 
 export class Anamnesis {
     id:number;
@@ -16,10 +16,10 @@ export class Anamnesis {
     pathological_personal_history:PathologicalPersonalHistory;
     no_pathological_personal_history:NoPathologicalPersonalHistory
     housing_conditions:HousingConditions
-    
-    familyHistoryList:Family[]
-    workHistoryList:Work[]
+
+    familyHistoryList:FamilyHistory[]=new Array
+    workHistoryList:WorkHistory[]=new Array
     presumptiveDiagnosticList:PresuntiveDiagnostic[]
-    patientSymptomList:Symptom[]
+    patientSymptomList:PatientSymptom[]
 }
 

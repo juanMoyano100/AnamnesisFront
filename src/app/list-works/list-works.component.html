@@ -3,18 +3,22 @@
 <table class="table table table-hover">
     <thead>
         <tr>
-            <th scope="col">ID</th>
+            <!-- <th scope="col">ID</th> -->
+            <th scope="col">Fecha inicio</th>
+            <th scope="col">Fecha fin</th>
             <th scope="col">Trabajo</th>
-            <th scope="col">Descripcion actividades</th>
+            <th scope="col">Actividad</th>
             <th></th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor='let w of works'>
-            <th scope="row">{{w?.id}}</th>
-            <td>{{w?.work}}</td>
-            <td>{{w?.activity_description}}</td>
+        <tr *ngFor='let w of worksHistories'>
+            <!-- <th scope="row">{{w?.id}}</th> -->
+            <td >{{w?.start_work_date}}</td>
+            <td >{{w?.end_work_date}}</td>
+            <td>{{w?.work.work}}</td>
+            <td>{{w?.work.activity_description}}</td>
             <td><button type="button" class="btn btn-primary"
                     routerLink="/work-edit/{{work?.id}}">Edit</button></td>
             <td><button type="button" class="btn btn-danger" (click)="deletework(work?.id)">Delete</button>
@@ -34,7 +38,7 @@
     </button>
   </div>
   <div class="modal-body">
-    <app-add-work></app-add-work>
+    <app-add-work [(newWorkHistory)]="workHistory"></app-add-work>
   </div>
   <div class="modal-footer">
     <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Cerrar</button>
