@@ -1,32 +1,41 @@
-<h1>Lista de familiares</h1>
-<table class="table table table-hover">
-    <thead>
-        <tr>
-            <th scope="col">Cedula</th>
-            <th scope="col">Nombre completo</th>
-            <th scope="col">Enfermedad</th>
-            <th scope="col">Relacion</th>
-            <th scope="col">Fuente</th>
-            <th></th>
-            <th></th>
+<div class="row">
+  <div class="col-12">
+    <br>
+    <h1 class="text-center">Lista de familiares</h1>
+    <table class="table table table-hover">
+      <thead>
+        <tr style="background-color: teal; color: white;">
+          <th scope="col">Cedula</th>
+          <th scope="col">Nombre completo</th>
+          <th scope="col">Enfermedad</th>
+          <th scope="col">Relacion</th>
+          <th scope="col">Fuente</th>
+          <th></th>
+          <th></th>
         </tr>
-    </thead>
-    <tbody>
+      </thead>
+      <tbody>
         <tr *ngFor='let f of familyHistories'>
-            <th scope="row">{{f?.family.cedula}}</th>
-            <td>{{f?.family.full_name}}</td>
-            <td>{{f?.family.disease}}</td>
-            <td>{{f?.family.relationship}}</td>
-            <td>{{f?.family.source}}</td>
-            <td><button type="button" class="btn btn-primary" routerLink="/work-edit/{{work?.id}}">Edit</button></td>
-            <td><button type="button" class="btn btn-danger" (click)="deletework(work?.id)">Delete</button>
-            </td>
+          <th scope="row">{{f?.family.cedula}}</th>
+          <td>{{f?.family.full_name}}</td>
+          <td>{{f?.family.disease}}</td>
+          <td>{{f?.family.relationship}}</td>
+          <td>{{f?.family.source}}</td>
+          <td><button type="button" class="btn btn-secondary" routerLink="/work-edit/{{work?.id}}">Editar</button></td>
+          <td><button type="button" class="btn btn-danger" (click)="deletework(work?.id)">Borrar</button>
+          </td>
         </tr>
-    </tbody>
-</table>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="row">
+  <div class="col-12" align="center">
+    <button class="btn btn-primary justify-center"  (click)="open(mymodal)">Agregar familiar</button>
+  </div>
+</div>
 
-<button class="btn btn-lg btn-primary" (click)="open(mymodal)">Agregar familiar</button>
-   
+
 <ng-template #mymodal let-modal>
   <div class="modal-header">
     <!-- <h4 class="modal-title" id="modal-basic-title">Bootstrap Modal</h4> -->
@@ -35,7 +44,7 @@
     </button>
   </div>
   <div class="modal-body">
-    <app-add-family [(newFamilyHistory)]="familyHistoy"  ></app-add-family>
+    <app-add-family [(newFamilyHistory)]="familyHistoy"></app-add-family>
   </div>
   <div class="modal-footer">
     <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Cerrar</button>

@@ -22,6 +22,8 @@ export class DiseasesAndDiagnosticComponent implements OnInit {
   disease: Disease = new Disease()
   diseases: Disease[] = new Array
   value = false
+  symptomName:string
+  diseaseName:string
   ngOnInit() {
     this.symptomService.getSymptom().subscribe((data: any) => { this.symptoms = data })
     this.diseaseService.getDisease().subscribe((data: any) => {
@@ -29,8 +31,15 @@ export class DiseasesAndDiagnosticComponent implements OnInit {
         return { ...element, obs: "", value: false }
       });
     })
-    this.newAnamnesis.patientSymptomList = this.patientSymptoms
-    this.newAnamnesis.presumptiveDiagnosticList = this.presuntiveDiagnostics
+    this.patientSymptoms=this.newAnamnesis.patientSymptomList 
+    this.presuntiveDiagnostics=this.newAnamnesis.presumptiveDiagnosticList
+  }
+  searchSymptom(symptomName){
+    this.symptomService.getSymptomsByName(symptomName).subscribe((data: any) => { this.symptoms = data })
+  }
+
+  searchDiseases(diseaseName){
+    this.diseaseService.getDiseasesByName(diseaseName).subscribe((data: any) => { this.diseases = data })
   }
 
   addSymptom(symptom) {

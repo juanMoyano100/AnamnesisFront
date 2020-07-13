@@ -18,11 +18,12 @@ export class FillAnamnesisComponent implements OnInit {
   constructor(private service:AnamnesisService,private router:Router) { }
 
   ngOnInit() {
-    this.finalAnamnesis.pathological_personal_history= new PathologicalPersonalHistory();
+    //Igualar las instancias de anamnesis
+    this.finalAnamnesis.pathological_personal_history= new PathologicalPersonalHistory(); 
     this.finalAnamnesis.no_pathological_personal_history=new NoPathologicalPersonalHistory;
     this.finalAnamnesis.housing_conditions =new  HousingConditions
   }
-
+//Guardar la anamnesis con todos sus datos 
   onSave(){
     console.log(this.finalAnamnesis);
       this.service.postAnamnesis(this.finalAnamnesis).subscribe((data:{})=>{

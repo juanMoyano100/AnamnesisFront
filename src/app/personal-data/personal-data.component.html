@@ -5,23 +5,24 @@
             <!-- <div class="form-group">
               <input type="text" [(ngModel)]="newWork.id_trabajo" class="form-control" placeholder="Id">
             </div> -->
+            <br>
             <div class="form-group">
                 <div class="row">
                     <div class="col-12">
                         <p><b>Ingrese el numero de cedula del paciente</b></p>
                     </div>
                     <div class="col-9">
-                        <input type="text" [(ngModel)]="patient.cedula" class="form-control" placeholder="Cédula">
+                        <input type="text" [(ngModel)]="cedula" class="form-control" placeholder="Cédula">
                     </div>
                     <div class="col-3">
-                        <button class="btn btn-primary" (click)="seachPatient(patient.cedula)">Buscar</button>
+                        <button class="btn btn-primary" (click)="seachPatient(cedula)">Buscar</button>
                     </div>
                 </div>
                 <br>
                 <div class="row" *ngIf="value">
                     <table class="table table table-hover">
                         <thead>
-                            <tr>
+                            <tr class="text-center" style="background-color: teal; color: white;">
                                 <th scope="col">Cédula</th>
                                 <th scope="col">Nombre</th>
                                 <th scope="col">Direccion</th>
@@ -50,12 +51,12 @@
                 <div class="row" *ngIf="value">
                     <table class="table table table-hover">
                         <thead>
-                            <tr>
+                            <tr class="text-center" style="background-color: teal; color: white;">
                                 <th scope="col">ID</th>
                                 <th scope="col">Motivo de consulta</th>
-                                <th scope="col">Diagnostico presuntivo</th>
+                                <th scope="col">Enfermedad</th>
                                 <th scope="col">Fecha de padecimiento</th>
-                                <th scope="col"></th>
+                                <!-- <th scope="col"></th> -->
                                 <th scope="col"></th>
                             </tr>
                         </thead>
@@ -63,10 +64,10 @@
                             <tr *ngFor='let anamn of patientAnamnesis'>
                                 <th scope="row">{{anamn?.id}}</th>
                                 <td>{{anamn?.reason_consultation}}</td>
-                                <td>{{anamn?.presumptiveDiagnosticList}}</td>
+                                <td>{{anamn?.actual_disease}}</td>
                                 <td>{{anamn?.condition_Date}}</td>
-                                <td><button type="button" class="btn btn-primary" routerLink="">Detalles</button></td>
-                                <td><button type="button" class="btn btn-success" routerLink="">Copiar</button></td>
+                                <!-- <td><button type="button" class="btn btn-primary" routerLink="">Detalles</button></td> -->
+                                <td><button type="button" class="btn btn-success" (click)="copy(anamn)">Copiar</button></td>
                             </tr>
                         </tbody>
                     </table>
@@ -81,14 +82,15 @@
             <div class="row" *ngIf="value">
                 <table class="table table table-hover">
                     <thead>
-                        <tr>
+                        <!-- <th colspan="5" class="text-center" style="background-color: teal; color: white;">Diagnosticos</th> -->
+                        <tr class="text-center" style="background-color: teal; color: white;">
                             <th scope="col">ID</th>
                             <th scope="col">Paciente</th>
                             <th scope="col">Caso</th>
                             <th scope="col">Precio</th>
                             <th scope="col">Fecha</th>
                             <th scope="col"></th>
-                            <th scope="col"></th>
+                            <!-- <th scope="col"></th> -->
                         </tr>
                     </thead>
                     <tbody>
@@ -103,8 +105,8 @@
                             <td>{{physicExam?.caso}}</td>
                             <td>{{physicExam?.precio}}</td>
                             <td>{{physicExam?.fecha}}</td>
-                            <td><button type="button" class="btn btn-primary" routerLink="">Detalles</button></td>
-                            <td><button type="button" class="btn btn-success" routerLink="">Adjuntar examen</button>
+                            <!-- <td><button type="button" class="btn btn-primary" routerLink="">Detalles</button></td> -->
+                            <td><button type="button" class="btn btn-success" (click)="addExam()">Adjuntar examen</button>
                             </td>
                         </tr>
                     </tbody>

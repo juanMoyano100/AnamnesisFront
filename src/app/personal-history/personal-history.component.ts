@@ -19,6 +19,8 @@ export class PersonalHistoryComponent implements OnInit {
   
   
   ngOnInit() {
+    console.log(this.newAnamnesis);
+    
     this.pathologicalHistory=this.newAnamnesis.pathological_personal_history
     this.noPathologicalHistory=this.newAnamnesis.no_pathological_personal_history
     this.housingCondition=this.newAnamnesis.housing_conditions

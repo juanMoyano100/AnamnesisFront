@@ -1,35 +1,40 @@
-<h1>Lista de trabajos</h1>
+<div class="row">
+  <div class="col-12">
+    <br>
+    <h1 class="text-center">Lista de trabajos</h1>
     <!-- <a type="button" class="btn btn-primary" [routerLink]="['../addWork']">Añadir trabajo</a> -->
-<table class="table table table-hover">
-    <thead>
-        <tr>
-            <!-- <th scope="col">ID</th> -->
-            <th scope="col">Fecha inicio</th>
-            <th scope="col">Fecha fin</th>
-            <th scope="col">Trabajo</th>
-            <th scope="col">Actividad</th>
-            <th></th>
-            <th></th>
+    <table class="table table table-hover">
+      <thead>
+        <tr style="background-color: teal; color: white;">
+          <!-- <th scope="col">ID</th> -->
+          <th scope="col">Fecha inicio</th>
+          <th scope="col">Fecha fin</th>
+          <th scope="col">Trabajo</th>
+          <th scope="col">Actividad</th>
+          <th></th>
+          <th></th>
         </tr>
-    </thead>
-    <tbody>
+      </thead>
+      <tbody>
         <tr *ngFor='let w of worksHistories'>
-            <!-- <th scope="row">{{w?.id}}</th> -->
-            <td >{{w?.start_work_date}}</td>
-            <td >{{w?.end_work_date}}</td>
-            <td>{{w?.work.work}}</td>
-            <td>{{w?.work.activity_description}}</td>
-            <td><button type="button" class="btn btn-primary"
-                    routerLink="/work-edit/{{work?.id}}">Edit</button></td>
-            <td><button type="button" class="btn btn-danger" (click)="deletework(work?.id)">Delete</button>
-            </td>
+          <!-- <th scope="row">{{w?.id}}</th> -->
+          <td>{{w?.start_work_date}}</td>
+          <td>{{w?.end_work_date}}</td>
+          <td>{{w?.work.work}}</td>
+          <td>{{w?.work.activity_description}}</td>
+          <td><button type="button" class="btn btn-secondary" routerLink="/work-edit/{{work?.id}}">Editar</button></td>
+          <td><button type="button" class="btn btn-danger" (click)="deletework(work?.id)">Borrar</button>
+          </td>
         </tr>
-    </tbody>
-</table>
-
-
-<button class="btn btn-lg btn-primary" (click)="open(mymodal)">Agregar trabajo</button>
-   
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="row">
+  <div class="col-12" align="center">
+    <button class="btn btn-primary" (click)="open(mymodal)">Agregar trabajo</button>
+  </div>
+</div>
 <ng-template #mymodal let-modal>
   <div class="modal-header">
     <!-- <h4 class="modal-title" id="modal-basic-title">Bootstrap Modal</h4> -->

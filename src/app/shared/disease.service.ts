@@ -10,13 +10,17 @@ export class DiseaseService {
 
   disease:Disease=new Disease()
   constructor(private httpclient:HttpClient) { }
-  url='http://localhost:8080/api/'
+  url="https://anamnesisservice-1594626638740.azurewebsites.net/api/"
+  //url='http://localhost:8080/api/'
   
   getDisease(): Observable<any>{
     return this.httpclient.get(this.url+'disease')
   }
-  getSymptomById():Observable<Disease>{
+  getDiseaseById():Observable<Disease>{
     let params1= new HttpParams().set('id','1')
     return this.httpclient.get<Disease>(this.url+'disease',{params:params1})
+  }
+  getDiseasesByName(diseaseName):Observable<any>{
+    return this.httpclient.get(this.url+'disease/search/'+diseaseName)
   }
 }

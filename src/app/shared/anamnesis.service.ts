@@ -7,26 +7,23 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AnamnesisService {
-  
   work:Anamnesis = new Anamnesis()
   constructor(private httpclient:HttpClient) { }
-  url='http://localhost:8080/api/'
-  //GET GetWorks
-  // getWorks(): Observable<any>{
-  //   return this.httpclient.get(this.url+'work')
-  // }
-  getAnamnesisById(id):Observable<Anamnesis>{
+  // url='http://localhost:8080/api/'
+  url='https://anamnesisservice-1594626638740.azurewebsites.net/api/'
+
+  getWorks(): Observable<any>{ //Metodo Get para obtener todas las anamnesis
+    return this.httpclient.get(this.url+'anamnesis')
+  }
+  getAnamnesisById(id):Observable<Anamnesis>{//Metodo Get para obtener una anamnesis por su ID
     let params1= new HttpParams().set('id',id);
     return this.httpclient.get<Anamnesis>(this.url+'anamnesis',{params:params1})
   }
-  getAnamnesisByPatientId(id_patient):Observable<Anamnesis>{
-    let params1= new HttpParams().set('id_patient',id_patient);
-    return this.httpclient.get<Anamnesis>(this.url+'anamnesis',{params:params1})
+  getAnamnesisByPatientId(id_patient):Observable<Anamnesis>{ //Metodo Get para obtener todas las anamnesis de un paciente
+    // let params1= new HttpParams().set('id_patient',id_patient);
+    return this.httpclient.get<Anamnesis>(this.url+'anamnesis/patient/'+id_patient)
   }
-  postAnamnesis(anamnesis:Anamnesis):Observable<any>{
+  postAnamnesis(anamnesis:Anamnesis):Observable<any>{ //Metodo POST para guardar una anamnesis
     return this.httpclient.post(this.url+'anamnesis',anamnesis)
-    //console.log(JSON.stringify({student}))
   }
-
-
 }

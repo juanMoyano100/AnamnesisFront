@@ -3,10 +3,10 @@
         <p><b>Nombre de los sintomas</b></p>
     </div>
     <div class="col-9">
-        <input type="text" [(ngModel)]="symptom.id_symptom" class="form-control" placeholder="Sintoma">
+        <input type="text" [(ngModel)]="symptomName" class="form-control" placeholder="Sintoma">
     </div>
     <div class="col-3">
-        <button class="btn btn-primary" (click)="seachPatient(symptom.id_symptom)">Buscar</button>
+        <button class="btn btn-primary" (click)="searchSymptom(symptomName)">Buscar</button>
     </div>
 </div>
 <br>
@@ -37,10 +37,10 @@
         <p><b>Agregar enfermedades</b></p>
     </div>
     <div class="col-9">
-        <input type="text" [(ngModel)]="disease.disease" class="form-control" placeholder="Enfermedad">
+        <input type="text" [(ngModel)]="diseaseName" class="form-control" placeholder="Enfermedad">
     </div>
     <div class="col-3">
-        <button class="btn btn-primary" (click)="seachSymptom(disease.disease)">Buscar</button>
+        <button class="btn btn-primary" (click)="searchDiseases(diseaseName)">Buscar</button>
     </div>
 </div>
 <br>
@@ -50,7 +50,7 @@
             <tr>
                 <th scope="col">Codigo</th>
                 <th scope="col">Enfermedad</th>
-                <th scope="col">Grupo</th>
+                <!-- <th scope="col">Grupo</th> -->
                 <th scope="col"></th>
                 <th scope="col"></th>
             </tr>
@@ -59,7 +59,7 @@
             <tr *ngFor='let dise of diseases'>
                 <th scope="row">{{dise?.id_disease}}</th>
                 <td>{{dise?.disease}}</td>
-                <td>{{dise?.diseaseGroup.disease_group}}</td>
+                <!-- <td>{{dise?.diseaseGroup.disease_group}}</td> -->
                 <td *ngIf="!dise.value" ><button type="button" class="btn btn-success"(click)="dise.value=!dise.value" >Agregar Observaciones</button></td>
                 <td *ngIf="dise.value" ><input type="text" [(ngModel)]="dise.obs"  class="form-control" placeholder="Observaciones"></td>
                 <td><button type="button" class="btn btn-success" (click)="addDisease(dise)">Agregar enfermedad</button></td>
