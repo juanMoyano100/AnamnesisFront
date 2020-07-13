@@ -33,6 +33,7 @@ export class ListFamilyComponent implements OnInit {
       this.familyHistories.push(this.familyHistoy)
       this.closeResult = 'Closed with: ${result}';
     }, (reason) => {
+      this.familyHistories.push(this.familyHistoy)
       this.closeResult = 'Dismissed ${this.getDismissReason(reason)}';
     });
   }

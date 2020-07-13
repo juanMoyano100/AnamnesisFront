@@ -3,13 +3,14 @@
         <p><b>Nombre de los sintomas</b></p>
     </div>
     <div class="col-9">
-        <input type="text" [(ngModel)]="patient.cedula" class="form-control" placeholder="Sintoma">
+        <input type="text" [(ngModel)]="symptom.id_symptom" class="form-control" placeholder="Sintoma">
     </div>
     <div class="col-3">
-        <button class="btn btn-primary" (click)="seachPatient(patient.cedula)">Buscar</button>
+        <button class="btn btn-primary" (click)="seachPatient(symptom.id_symptom)">Buscar</button>
     </div>
 </div>
-<div class="row" *ngIf="value">
+<br>
+<div class="row">
     <table class="table table table-hover">
         <thead>
             <tr>
@@ -21,57 +22,60 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor='let anamn of patientAnamnesis'>
-                <th scope="row">{{anamn?.id}}</th>
-                <td>{{anamn?.reason_consultation}}</td>
-                <td>{{anamn?.presumptiveDiagnosticList}}</td>
-                <td><button type="button" class="btn btn-primary" routerLink="">Detalles</button></td>
-                <td><button type="button" class="btn btn-success" routerLink="">Agregar</button></td>
+            <tr *ngFor='let symp of symptoms'>
+                <th scope="row">{{symp?.id_symptom}}</th>
+                <td>{{symp?.symptom_name}}</td>
+                <td>{{symp?.description}}</td>
+                <td><button type="button" class="btn btn-success" (click)="addSymptom(symp)">Agregar sintoma</button></td>
             </tr>
         </tbody>
     </table>
 </div>
-
+<br>
 <div class="row">
     <div class="col-12">
         <p><b>Agregar enfermedades</b></p>
     </div>
     <div class="col-9">
-        <input type="text" [(ngModel)]="patient.cedula" class="form-control" placeholder="Sintoma">
+        <input type="text" [(ngModel)]="disease.disease" class="form-control" placeholder="Enfermedad">
     </div>
     <div class="col-3">
-        <button class="btn btn-primary" (click)="seachPatient(patient.cedula)">Buscar</button>
+        <button class="btn btn-primary" (click)="seachSymptom(disease.disease)">Buscar</button>
     </div>
 </div>
-<div class="row" *ngIf="value">
+<br>
+<div class="row">
     <table class="table table table-hover">
         <thead>
             <tr>
                 <th scope="col">Codigo</th>
-                <th scope="col">Sintoma</th>
-                <th scope="col">Descripcion</th>
+                <th scope="col">Enfermedad</th>
+                <th scope="col">Grupo</th>
                 <th scope="col"></th>
                 <th scope="col"></th>
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor='let anamn of patientAnamnesis'>
-                <th scope="row">{{anamn?.id}}</th>
-                <td>{{anamn?.reason_consultation}}</td>
-                <td>{{anamn?.presumptiveDiagnosticList}}</td>
-                <td><button type="button" class="btn btn-primary" routerLink="">Detalles</button></td>
-                <td><button type="button" class="btn btn-success" routerLink="">Agregar</button></td>
+            <tr *ngFor='let dise of diseases'>
+                <th scope="row">{{dise?.id_disease}}</th>
+                <td>{{dise?.disease}}</td>
+                <td>{{dise?.diseaseGroup.disease_group}}</td>
+                <td *ngIf="!dise.value" ><button type="button" class="btn btn-success"(click)="dise.value=!dise.value" >Agregar Observaciones</button></td>
+                <td *ngIf="dise.value" ><input type="text" [(ngModel)]="dise.obs"  class="form-control" placeholder="Observaciones"></td>
+                <td><button type="button" class="btn btn-success" (click)="addDisease(dise)">Agregar enfermedad</button></td>
             </tr>
+            <!-- <ngb-pagination [(page)]="page"  [pageSize]="pageSize"  [collectionSize]="diseases.length"></ngb-pagination> -->
         </tbody>
     </table>
 </div>
 
-<div class="row">
+<!-- <div class="row">
     <div class="col-3">
         Observaciones diagnostico presuntivo
     </div>
     <div class="col-9">
-        <input type="date" [(ngModel)]="newAnamnesis.condition_Date" class="form-control"
-            placeholder="Fecha padecimiento">
+        
+        <input type="text" [(ngModel)]=""  class="form-control"
+            placeholder="Observaciones">
     </div>
-</div>
+</div> -->

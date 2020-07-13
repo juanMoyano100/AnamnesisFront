@@ -25,8 +25,9 @@ export class FillAnamnesisComponent implements OnInit {
 
   onSave(){
     console.log(this.finalAnamnesis);
-      // this.service.postAnamnesis(this.finalAnamnesis).subscribe((data:{})=>{
-      //   this.router.navigate(['/'])
-      // })
+      this.service.postAnamnesis(this.finalAnamnesis).subscribe((data:{})=>{
+        this.router.navigate(['/'])
+      })
+      alert("Anamnesis completa")
   }
 }

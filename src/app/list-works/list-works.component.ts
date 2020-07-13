@@ -36,6 +36,7 @@ export class ListWorksComponent implements OnInit {
       this.worksHistories.push(this.workHistory)
       this.closeResult = 'Closed with: ${result}';
     }, (reason) => {
+      this.worksHistories.push(this.workHistory)
       this.closeResult = 'Dismissed ${this.getDismissReason(reason)}';
       
     });

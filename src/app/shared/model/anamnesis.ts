@@ -5,6 +5,7 @@ import { PresuntiveDiagnostic } from './presuntive-diagnostic';
 import { FamilyHistory } from './family-history';
 import { WorkHistory } from './work-history';
 import { PatientSymptom } from './patient-symptom';
+import { RegistryAnamnesis } from './registry-anamnesis';
 
 export class Anamnesis {
     id:number;
@@ -16,10 +17,10 @@ export class Anamnesis {
     pathological_personal_history:PathologicalPersonalHistory;
     no_pathological_personal_history:NoPathologicalPersonalHistory
     housing_conditions:HousingConditions
-
     familyHistoryList:FamilyHistory[]=new Array
     workHistoryList:WorkHistory[]=new Array
-    presumptiveDiagnosticList:PresuntiveDiagnostic[]
-    patientSymptomList:PatientSymptom[]
+    presumptiveDiagnosticList:PresuntiveDiagnostic[]=[]
+    patientSymptomList:PatientSymptom[]=new Array
+    registryAnamneses:RegistryAnamnesis[]=new Array   
 }
 
