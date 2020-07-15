@@ -16,6 +16,8 @@ import { MedicRegisterComponent } from './medic-register/medic-register.componen
 import { FillAnamnesisComponent } from './fill-anamnesis/fill-anamnesis.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import {NgbPaginationModule, NgbAlertModule,NgbProgressbarModule,NgbModule  } from '@ng-bootstrap/ng-bootstrap';
+import { ListAnamesisComponent } from './list-anamesis/list-anamesis.component';
+import { AboutUsComponent } from './about-us/about-us.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,8 @@ import {NgbPaginationModule, NgbAlertModule,NgbProgressbarModule,NgbModule  } fr
     MedicRegisterComponent,
     FillAnamnesisComponent,
     NavbarComponent,
+    ListAnamesisComponent,
+    AboutUsComponent,
   ],
   imports: [
     BrowserModule,

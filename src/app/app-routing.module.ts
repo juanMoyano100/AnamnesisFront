@@ -6,6 +6,8 @@ import { AddFamilyComponent } from './add-family/add-family.component';
 import { ListFamilyComponent } from './list-family/list-family.component';
 import { PersonalDataComponent } from './personal-data/personal-data.component';
 import { FillAnamnesisComponent } from './fill-anamnesis/fill-anamnesis.component';
+import { AboutUsComponent } from './about-us/about-us.component';
+import { ListAnamesisComponent } from './list-anamesis/list-anamesis.component';
 
 
 const routes: Routes = [
@@ -14,6 +16,8 @@ const routes: Routes = [
   {path: 'addFamily', component:AddFamilyComponent},
   {path: 'listFamily', component:ListFamilyComponent},
   {path: 'personalData', component:PersonalDataComponent},
+  {path: 'about-us', component:AboutUsComponent},
+  {path: 'list', component:ListAnamesisComponent},
   {path: '', component:FillAnamnesisComponent }
 ];
 

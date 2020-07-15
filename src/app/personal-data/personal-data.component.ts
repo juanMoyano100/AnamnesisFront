@@ -5,6 +5,7 @@ import { Anamnesis } from '../shared/model/anamnesis';
 import { PhysicExam } from '../shared/model/physic-exam';
 import { NoPathologicalPersonalHistory } from '../shared/model/no-pathological-personal-history';
 import { PatientService } from '../shared/patient.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-personal-data',
@@ -17,17 +18,18 @@ export class PersonalDataComponent {
   @Input() newAnamnesis: Anamnesis
   physicExam: PhysicExam = new PhysicExam
   value = false
-  constructor(private anamnesisService: AnamnesisService,private patientService:PatientService) { }
+  constructor(private anamnesisService: AnamnesisService, private patientService: PatientService,private modalService: NgbModal) { }
   patientAnamnesis: Anamnesis[]
   date = new Date()
-  cedula:number
+  cedula: number
+  anamnesisCharged:Anamnesis=new Anamnesis
   ngOnInit() {
   }
 
   seachPatient(cedula) {
     console.log(this.cedula)
     // this.patientService.getPatientByid(cedula).subscribe((data:any)=>{this.patient = data})
-    this.patientService.getPatientByCedula(cedula).subscribe((data:any)=>{this.patient = data})
+    this.patientService.getPatientByCedula(cedula).subscribe((data: any) => { this.patient = data })
     this.value = true;
     // this.patient.id = 23
     // this.patient.cedula = "0105667784"
@@ -36,7 +38,7 @@ export class PersonalDataComponent {
     // this.patient.telefono = "2883743"
     // this.patient.fecha_nacimiento = "1982-11-11"
     // this.patient.nacionalidad = "Ecuatoriana"
-    this.patient.id=this.cedula
+    this.patient.id = this.cedula
     this.newAnamnesis.id_patient = this.patient.id
     this.seachAnamnesis(this.patient.id)
     this.searchExamen(this.patient.id)
@@ -54,7 +56,7 @@ export class PersonalDataComponent {
     this.physicExam.fecha = this.date
     // this.newAnamnesis.id_physical_exam = this.physicExam.id
   }
-  addExam(){
+  addExam() {
     this.newAnamnesis.id_physical_exam = this.physicExam.id
     // this.physicExam.paciente = idPatient;
   }
@@ -63,10 +65,27 @@ export class PersonalDataComponent {
     this.newAnamnesis.no_pathological_personal_history = { ...anamnesis.no_pathological_personal_history, id: undefined }
     this.newAnamnesis.pathological_personal_history = { ...anamnesis.pathological_personal_history, id: undefined }
     this.newAnamnesis.housing_conditions = { ...anamnesis.housing_conditions, id: undefined }
-    this.newAnamnesis.familyHistoryList = anamnesis.familyHistoryList.map(e => { return { ...e, id_family_history: undefined, anamnesis: {...e.anamnesis,id:undefined} }})
-    this.newAnamnesis.workHistoryList = anamnesis.workHistoryList.map(e => { return { ...e, id: undefined, anamnesis: {...e.anamnesis,id:undefined} } })
+    this.newAnamnesis.familyHistoryList = anamnesis.familyHistoryList.map(e => { return { ...e, id_family_history: undefined, anamnesis: { ...e.anamnesis, id: undefined } } })
+    this.newAnamnesis.workHistoryList = anamnesis.workHistoryList.map(e => { return { ...e, id: undefined, anamnesis: { ...e.anamnesis, id: undefined } } })
 
     // console.log(this.newAnamnesis);
+  }
+  title = 'appBootstrap';
+
+  closeResult: string;
+
+  showDetails(content:Anamnesis) {
+    this.anamnesisCharged=content
+    console.log(this.anamnesisCharged)
+    // this.workHistory = new WorkHistory;
+    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
+      // this.worksHistories.push(this.workHistory)
+      this.closeResult = 'Closed with: ${result}';
+    }, (reason) => {
+      // this.worksHistories.push(this.workHistory)
+      this.closeResult = 'Dismissed ${this.getDismissReason(reason)}';
+
+    });
   }
 
 }

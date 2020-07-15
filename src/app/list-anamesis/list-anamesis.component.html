@@ -1,0 +1,296 @@
+<app-navbar></app-navbar>
+<br>
+<div class="row">
+    <div class="col-12">
+        <p><b>Ingrese el numero de cedula del paciente</b></p>
+    </div>
+    <div class="col-9">
+        <input type="text" [(ngModel)]="cedula" class="form-control" placeholder="Cédula">
+    </div>
+    <div class="col-3">
+        <button class="btn btn-primary" (click)="seachPatient(cedula)">Buscar</button>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12" >
+        <p><b></b> </p>
+    </div>
+</div>
+<div class="row" >
+    <table class="table table table-hover">
+        <thead>
+            <tr class="text-center" style="background-color: teal; color: white;">
+                <th scope="col">ID</th>
+                <th scope="col">Motivo de consulta</th>
+                <th scope="col">Enfermedad</th>
+                <th scope="col">Fecha de padecimiento</th>
+                <!-- <th scope="col"></th> -->
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor='let anamn of patientAnamnesis'>
+                <th scope="row">{{anamn?.id}}</th>
+                <td>{{anamn?.reason_consultation}}</td>
+                <td>{{anamn?.actual_disease}}</td>
+                <td>{{anamn?.condition_Date}}</td>
+                <!-- <td><button type="button" class="btn btn-primary" routerLink="">Detalles</button></td> -->
+                <td><button type="button" class="btn btn-success" (click)="search(anamn)">Mostrar</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<br>
+<div class="row">
+    <div class="col-12">
+        <p><b> Anamnesis</b></p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <table class="table table table-hover">
+            <thead>
+                <tr>
+                    <th colspan="4" class="text-center" style="background-color: teal; color: white;">Datos personales
+                        generales</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>Cedula</th>
+                    <td>{{newAnamnesis.id_patient}}</td>
+                    <th>Examen fisico</th>
+                    <td>{{newAnamnesis.id_physical_exam}}</td>
+                </tr>
+                <tr>
+                    <th>Fecha padecimiento</th>
+                    <td>{{newAnamnesis.condition_Date}}</td>
+                    <th>Enfermedad actual</th>
+                    <td>{{newAnamnesis.actual_disease}}</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>
+<div class="row">
+    <div class="col-12 ">
+        <table class="table table table-hover">
+            <thead>
+                <tr>
+                    <th colspan="2" class="text-center" style="background-color: teal; color: white;">Antecedentes
+                        personales</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th colspan="2" class="text-center">Antecedentes personales patologicos</th>
+                </tr>
+                <tr>
+                    <th>Quirurgicos</th>
+                    <td>{{newAnamnesis.pathological_personal_history.quirurgicos}}</td>
+                </tr>
+                <tr>
+                    <th>Traumáticos</th>
+                    <td>{{newAnamnesis.pathological_personal_history.traumaticos}}</td>
+                </tr>
+                <tr>
+                    <th>Clínicios</th>
+                    <td>{{newAnamnesis.pathological_personal_history.clinicos}}</td>
+                </tr>
+                <tr>
+                    <th colspan="2" class="text-center">Antecedentes personales no patologicos</th>
+                </tr>
+
+                <tr>
+                    <th>Actividad física</th>
+                    <td>{{newAnamnesis.no_pathological_personal_history.physic_activities}}</td>
+                </tr>
+                <tr>
+                    <th>Hábitos tóxicos</th>
+                    <td>{{newAnamnesis.no_pathological_personal_history.toxic_habits}}</td>
+                </tr>
+                <tr>
+                    <th>Alimnetación</th>
+                    <td>{{newAnamnesis.no_pathological_personal_history.alimentation}}</td>
+                </tr>
+                <tr>
+                    <th>Habitos de sueño</th>
+                    <td>{{newAnamnesis.no_pathological_personal_history.dream_habits}}</td>
+                </tr>
+                <tr>
+                    <th>Última donación de sangre </th>
+                    <td>{{newAnamnesis.no_pathological_personal_history.last_blood_donation}}</td>
+                </tr>
+                <tr>
+                    <th>Automedicación </th>
+                    <td>{{newAnamnesis.no_pathological_personal_history.automedication}}</td>
+                </tr>
+                <tr>
+                    <th>Higiene </th>
+                    <td>{{newAnamnesis.no_pathological_personal_history.hygiene}}</td>
+                </tr>
+                <tr>
+                    <th>Vacunas </th>
+                    <td>{{newAnamnesis.no_pathological_personal_history.vaccines}}</td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <table class="table table table-hover">
+            <tbody>
+                <tr>
+                    <th colspan="4" class="text-center">Condiciones de vivienda</th>
+                </tr>
+                <tr>
+                    <th>Tipo de vivienda</th>
+                    <td>{{newAnamnesis.housing_conditions.house_type}}</td>
+                    <th>Zona</th>
+                    <td>{{newAnamnesis.housing_conditions.zone}}</td>
+                </tr>
+                <tr>
+                    <th>Alcantarillado</th>
+                    <td>{{newAnamnesis.housing_conditions.sewerage}}</td>
+                    <th>Fabricas cercanas</th>
+                    <td>{{newAnamnesis.housing_conditions.nearby_factories}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <table class="table table table-hover">
+            <thead>
+                <th colspan="5" class="text-center" style="background-color: teal; color: white;">Antecedentes
+                    familiares</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="col">Cedula</th>
+                    <th scope="col">Nombre completo</th>
+                    <th scope="col">Enfermedad</th>
+                    <th scope="col">Relacion</th>
+                    <th scope="col">Fuente</th>
+                </tr>
+                <tr *ngFor='let f of newAnamnesis.familyHistoryList'>
+                    <th scope="row">{{f?.family.cedula}}</th>
+                    <td>{{f?.family.full_name}}</td>
+                    <td>{{f?.family.disease}}</td>
+                    <td>{{f?.family.relationship}}</td>
+                    <td>{{f?.family.source}}</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <table class="table table table-hover">
+            <thead>
+                <tr>
+                    <th colspan="5" class="text-center" style="background-color: teal; color: white;">Antecedentes
+                        Laborales</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="col">Fecha inicio</th>
+                    <th scope="col">Fecha fin</th>
+                    <th scope="col">Trabajo</th>
+                    <th scope="col">Actividad</th>
+                </tr>
+                <tr *ngFor='let w of newAnamnesis.workHistoryList'>
+                    <td>{{w?.start_work_date}}</td>
+                    <td>{{w?.end_work_date}}</td>
+                    <td>{{w?.work.work}}</td>
+                    <td>{{w?.work.activity_description}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<!-- <div class="row">
+    <div class="col-12">
+        <table class="table table table-hover">
+            <thead>
+                <tr>
+                    <th colspan="5" class="text-center" style="background-color: teal; color: white;">Sintomas</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="col">Codigo</th>
+                    <th scope="col">Sintoma</th>
+                    <th scope="col">Descripcion</th>
+                </tr>
+                <tr *ngFor='let symp of newAnamnesis.patientSymptomList'>
+                    <th scope="row">{{symp?.symptom.id_symptom}}</th>
+                    <td>{{symp?.symptom.symptom_name}}</td>
+                    <td>{{symp?.symptom.description}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <table class="table table table-hover">
+            <thead>
+                <tr>
+                    <th colspan="5" class="text-center" style="background-color: teal; color: white;">Diagnosticos</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="col">Codigo</th>
+                    <th scope="col">Enfermedad</th>
+                    <th scope="col">Observaciones</th>
+                </tr>
+                <tr *ngFor='let dise of newAnamnesis.presumptiveDiagnosticList'>
+                    <th scope="row">{{dise?.disease.id_disease}}</th>
+                    <td>{{dise?.disease.disease}}</td>
+                    <td>{{dise?.diagnostic}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div> -->
+
+
+<!--<div class="">
+    <div class="row">
+        <div class="col-3">
+            Informacion examen físico
+        </div>
+        <div class="col-9">
+            <input type="text" [(ngModel)]="newAnamnesis.id_physical_exam" class="form-control"
+                placeholder="Examen físico">
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-3">
+            Motivo de consulta
+        </div>
+        <div class="col-9">
+            <input type="text" [(ngModel)]="newAnamnesis.reason_consultation" class="form-control"
+                placeholder="Motivo de consulta">
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-3">
+            Fecha padecimiento
+        </div>
+        <div class="col-9">
+            <input type="date" [(ngModel)]="newAnamnesis.condition_Date" class="form-control"
+                placeholder="Fecha padecimiento">
+        </div>
+    </div> <br> -->

@@ -66,7 +66,7 @@
                                 <td>{{anamn?.reason_consultation}}</td>
                                 <td>{{anamn?.actual_disease}}</td>
                                 <td>{{anamn?.condition_Date}}</td>
-                                <!-- <td><button type="button" class="btn btn-primary" routerLink="">Detalles</button></td> -->
+                                <!-- <td><button type="button" class="btn btn-primary" (click)="showDetails(anam)">Detalles</button></td> -->
                                 <td><button type="button" class="btn btn-success" (click)="copy(anamn)">Copiar</button></td>
                             </tr>
                         </tbody>
@@ -163,3 +163,19 @@
         </div>
     </div>
 </div>
+
+<ng-template #mymodal let-modal>
+    <div class="modal-header">
+      <!-- <h4 class="modal-title" id="modal-basic-title">Bootstrap Modal</h4> -->
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">×</span>
+      </button>
+    </div>
+    <div class="modal-body">
+        <app-list-anamesis [(newAnamnesis)]="anamnesisCharged"></app-list-anamesis>
+      <!-- <app-add-work [(newWorkHistory)]="workHistory"></app-add-work> -->
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Cerrar</button>
+    </div>
+  </ng-template>
